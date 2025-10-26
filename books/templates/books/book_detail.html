@@ -1,0 +1,8 @@
+<h1>{{ object.title }}</h1>
+<p>Author: {{ object.author }}</p>
+<p>Publish Date: {{ object.publish_date }}</p>
+<p>Category: {{ object.category.name }}</p>
+<p>Expenses: {{ object.distribution_expenses }}</p>
+<a href="{% url 'book-edit' object.pk %}">Edit</a>
+<a href="{% url 'book-list' %}">Back to List</a>
+
