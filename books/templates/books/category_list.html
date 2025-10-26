@@ -1,0 +1,8 @@
+<h1>Categories</h1>
+<ul>
+    {% for cat in object_list %}
+        <li>{{ cat.name }} <a href="{% url 'category-edit' cat.pk %}">Edit</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'category-add' %}">Add Category</a>
+
