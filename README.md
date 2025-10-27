@@ -1,3 +1,266 @@
+
+<!-- ===================================================================== -->
+<!--   EXPENSE TRACKER APP - BY WAN MOHAMAD HANIS                          -->
+<!-- ===================================================================== -->
+
+<div align="center">
+
+# 📊 Expense Tracker App (Django)
+
+_“A modern, analytics-focused Django application for tracking book distribution expenses and inventory metrics.”_
+
+[![Django](https://img.shields.io/badge/Django-5.2.7-blue?logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![Python](https://img.shields.io/badge/Python-3.11-lightblue?logo=python&logoColor=white)](https://python.org)
+[![License](https://img.shields.io/badge/License-Educational-green.svg)](#license)
+[![GitHub last commit](https://img.shields.io/github/last-commit/NovusAevum/expense-tracker-app.svg?logo=git)](https://github.com/NovusAevum/expense-tracker-app/commits/main)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Built With 💚 by WMH](https://img.shields.io/badge/Built%20With-%F0%9F%92%9A%20by%20WMH-success)
+
+</div>
+
+---
+
+## 🧭 Overview
+
+This **Expense Tracker App** is a fully functional **Django web application** that allows tracking of book expenses, categorization, reporting, and visualization — tailored for **Rumi Press** as a Coursera showcase project.  
+
+It demonstrates **real-world engineering principles**, including REST APIs, ORM logic, CSV ingestion automation, and Chart.js frontend integration.
+
+---
+
+## 🌐 Live Representation  
+> [GitHub Repository → Expense Tracker App](https://github.com/NovusAevum/expense-tracker-app)
+
+---
+
+## 🌟 Features
+
+| Feature | Capability |
+|----------|-------------|
+| **Book Management** | CRUD operations for book entries (with details like author, price, date, and category). |
+| **Category Hierarchies** | Establish parent-child category relationships dynamically. |
+| **Expense Analytics** | Category-wise total expense tracking with Chart.js reports. |
+| **CSV Importer** | Bulk upload data for operational efficiency. |
+| **Report Exporting** | Generate expense summaries in PDF & Excel formats. |
+| **Authentication Layer** | Django-based login, logout, access control. |
+| **REST API** | Light-weight API endpoints using Django REST Framework. |
+
+---
+
+## 🧩 Tech Stack & Integrations
+
+| Layer | Technology |
+|:------|:------------|
+| Backend | Django 5.2.7, Python 3.11 |
+| Frontend | HTML5, Bootstrap 5.3.2, Chart.js |
+| Database | SQLite (plug-and-play) |
+| Additional Libraries | xhtml2pdf, django-filter, openpyxl |
+| Versioning | Git + GitHub |
+| Deployment | Render / Vercel / PythonAnywhere ready |
+
+---
+
+## 🧱 Architecture
+
+
+graph TD
+A[User Interface / Browser] -->|HTTP Request| B(Views - Django CBVs)
+B --> C[Models (Book, BookCategory)]
+C --> D[(SQLite Database)]
+B --> E[Template Engine (Jinja2)]
+E --> F[Chart.js Data Visualization]
+G[REST Framework] --> B
+text
+
+---
+
+## 🌀 System Workflow
+
+
+sequenceDiagram
+participant U as User
+participant D as Django
+participant DB as SQLite
+participant API as DRF Endpoint
+text
+U->>D: Request Dashboard (/books/)
+D->>DB: Query Book & Category Tables
+DB-->>D: Result Set (JSON/QuerySet)
+D-->>U: Render HTML + Chart Data
+U->>API: GET /api/books/
+API->>D: Serve RESTful JSON Response
+
+text
+
+---
+
+## ⚙️ Installation
+
+### Prerequisites
+- Python 3.8+
+- Git installed
+- Virtual environment configured
+
+### Commands (Copy-Paste)
+
+
+git clone https://github.com/NovusAevum/expense-tracker-app.git
+cd expense-tracker-app
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver 8001
+text
+
+Access the application:
+- 📚 http://127.0.0.1:8001/books/
+- 🏛 http://127.0.0.1:8001/admin/
+- 📈 http://127.0.0.1:8001/report/
+
+---
+
+## 📘 Usage
+
+### Manage Data
+- **Add books:** `/books/add/`
+- **Track expenses:** `/report/`
+- **Manage users:** `/admin/`
+- **View JSON:** `/api/books/`
+
+### Export Reports
+
+/report/pdf/ → PDF Export
+/report/excel/ → Excel Export
+text
+
+---
+
+## 🧭 Directory Structure
+
+
+expense-tracker-app/
+├── books/
+│ ├── admin.py
+│ ├── api.py
+│ ├── models.py
+│ ├── urls.py
+│ ├── views.py
+│ └── templates/books/
+│ ├── base.html
+│ ├── book_list.html
+│ ├── book_form.html
+│ ├── book_detail.html
+│ ├── category_list.html
+│ ├── report.html
+│ └── report_pdf.html
+├── expense_tracker/
+│ ├── settings.py
+│ ├── urls.py
+│ └── wsgi.py
+└── manage.py
+
+---
+
+## 📊 API Overview
+
+| Method | Endpoint | Description |
+|:--------|:----------|:-------------|
+| GET | `/api/books/` | Retrieve all books |
+| POST | `/api/books/` | Create a book |
+| PUT | `/api/books/<id>/` | Update a book |
+| DELETE | `/api/books/<id>/` | Delete a book |
+
+---
+
+## 🎨 Theming & UX
+
+📌 Integrated with **Bootstrap 5** (light/dark switch ready via CSS Variables).  
+📈 Charts rendered dynamically using **Chart.js responsive canvas**.  
+
+Want Dark Mode? Toggle provided in navbar on all templates extending `base.html`.
+
+---
+
+## 🔮 Future Enhancements
+
+| Feature | Description |
+|----------|--------------|
+| 🔍 Search Filter | Advanced search powered by `django-filter`. |
+| 🔐 Multi-user Access | Multi-login roles with permissions. |
+| 📤 Export CSV | Export records in bulk. |
+| 🧾 DRF JWT Auth | Authenticated REST endpoints. |
+| 🖼 File Management | Add book cover image uploads. |
+| 📧 Notifications | Auto email alerts for low stock. |
+
+---
+
+## 🧠 Learning Outcomes
+
+- Working knowledge of Django ORM and CBVs  
+- Template Inheritance + Bootstrap composition  
+- API design fundamentals (CRUD architecture)  
+- Handling static & media content efficiently  
+- Integrating data visualization for insights  
+
+---
+
+## 🤝 Contributing
+
+Contributions are open for pull requests.  
+
+🔥 Enhancement ideas? Open an **Issue** on [GitHub](https://github.com/NovusAevum/expense-tracker-app/issues).
+
+---
+
+## 🧾 License
+
+Licensed under Educational Use © 2025 — *Wan Mohamad Hanis Bin Wan Hassan*.  
+Created as part of coursework and personal portfolio development.
+
+---
+
+## 👨‍💻 Author & Maintainer
+
+**Wan Mohamad Hanis Bin Wan Hassan (WMH)**  
+👔 [LinkedIn](https://www.linkedin.com/in/wanmohamadhanis)  
+🧠 [GitHub](https://github.com/NovusAevum)  
+🎓 [Coursera Profile](https://www.coursera.org/learner/triumphanthanis)  
+💬 [TryHackMe](https://tryhackme.com/p/wmhZeroSignal)
+
+---
+
+## 🪶 Acknowledgments
+
+- Django Official Documentation  
+- Bootstrap Framework  
+- Coursera Showcase Lab  
+- Chart.js for financial visualizations  
+
+---
+
+<div align="center">
+
+> _“Built with precision. Crafted with intention. Documented for clarity.”_  
+> — **WMH (NovusAevum)**
+
+</div>
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
 # 📚 Expense Tracker App (Django)
 
 A full-featured Django web application for tracking book inventory, expenses, and categories. Originally designed to automate book distribution tracking for Rumi Press, this project demonstrates proficiency in Django MVC architecture, database design, CRUD operations, and modern web development practices.
