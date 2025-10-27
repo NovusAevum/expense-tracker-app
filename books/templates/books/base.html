@@ -1,0 +1,13 @@
+{% if user.is_authenticated %}
+    Hello, {{ user.username }}!
+    <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def expense_report(request):
+    # your code
+

@@ -18,3 +18,6 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
+cover = models.ImageField(upload_to='covers/', blank=True, null=True)
+

@@ -14,3 +14,14 @@ urlpatterns = [
     path('report/', views.expense_report, name='expense-report'),
 ]
 
+path('report/pdf/', views.export_report_pdf, name='report-pdf'),
+path('report/excel/', views.export_report_excel, name='report-excel'),
+
+from .api import BookViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'api/books', BookViewSet)
+
+urlpatterns += router.urls
+

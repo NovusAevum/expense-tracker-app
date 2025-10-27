@@ -1,3 +1,10 @@
+<form method="get">
+  {{ filter.form.as_p }}
+  <button type="submit">Search</button>
+</form>
+<!-- rest of your book list template -->
+
+
 <h1>Book List</h1>
 <ul>
     {% for book in object_list %}

@@ -1,0 +1,20 @@
+import openpyxl
+def export_report_excel(request):
+    from openpyxl import Workbook
+    wb = Workbook()
+    ws = wb.active
+    ws.append(['Category', 'Expenses'])
+    data = (
+        BookCategory.objects.annotate(
+            total_expenses=Sum('book__distribution_expenses')
+        ).values('name', 'total_expenses')
+    )
+    for cat in data:
+        ws.append([cat['name'], cat['total_expenses'] or 0])
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    response['Content-Disposition'] = 'attachment; filename=report.xlsx'
+    wb.save(response)
+    return response
+

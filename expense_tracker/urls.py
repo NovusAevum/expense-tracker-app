@@ -33,3 +33,13 @@ urlpatterns = [
     path('', include('books.urls')),
 ]
 
+from django.urls import path, include
+from django.views.generic import RedirectView
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),  # Add this
+    path('', RedirectView.as_view(url='/books/', permanent=False)),
+    path('', include('books.urls')),
+]
+
